@@ -23,6 +23,24 @@
 
   <body>
     <style>
+      html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+      #map {
+            height: 100%;
+            width: 100%;
+        }
+      #button-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+      }
       button {
         background-color: #000000;
         border: 1px solid #fff;
@@ -33,12 +51,10 @@
         font-family: courier, monospace;
         font-size: 14px;
         height: 30px;
-        margin: 0 0 7px 10px;
+        margin: 0 0 7px 0;
         min-width: 35px;
         padding: 0 5px;
-        position: relative;
         text-align: center;
-        top: 125px;
         z-index: 999;
       }
       button#top {
@@ -47,13 +63,12 @@
         color: #000000;
         font-size: 15px;
         font-weight: bolder;
-        top: 125px;
       }
       h3#header {
         color: rgb(0, 0, 0);
         font-family: courier, monospace;
         position: absolute;
-        top: 550px;
+        bottom: 50px;
         text-align: center;
         width: 100%;
         z-index: 999;
@@ -79,38 +94,37 @@
       }
     </style>
 
-    <div
-      id="map"
-      style="height: 600px; position: absolute; top: 27px; width: 100%"
-    ></div>
+    <div id="map"></div>
 
-    <button id="top">
-      Zoom
-      <br />
-      to:
-    </button>
+    <div id="button-container">
+      <button id="top">
+        Zoom
+        <br />
+        to:
+      </button>
 
-    <button
-      onclick="flyTo( 39.78959911075947, -105.03152251289724, 'Colorado')"
-    >
-      Colorado
-    </button>
-    <button
-      onclick="flyTo( 40.70759067938466, -111.88710836495122, 'Salt Lake City')"
-    >
-      Salt Lake City
-    </button>
-    <button onclick="flyTo( 37.858591, -111.493327, 'Southern Utah')">
-      Southern Utah
-    </button>
-    <button onclick="flyTo( 58.200, -134.197786, 'Juneau')">Juneau</button>
-    <button onclick="flyTo( 39.002377, -95.052264, 'Kansas')">Kansas</button>
-    <button onclick="flyTo( 39.068355, -94.840670, 'Lake of the Forest')">
-      Lake of the Forest
-    </button>
-    <button onclick="flyTo( 42.053223, -70.608589, 'Massachusetts')">
-      Massachusetts
-    </button>
+      <button
+        onclick="flyTo( 39.78959911075947, -105.03152251289724, 'Colorado')"
+      >
+        Colorado
+      </button>
+      <button
+        onclick="flyTo( 40.70759067938466, -111.88710836495122, 'Salt Lake City')"
+      >
+        Salt Lake City
+      </button>
+      <button onclick="flyTo( 37.858591, -111.493327, 'Southern Utah')">
+        Southern Utah
+      </button>
+      <button onclick="flyTo( 58.200, -134.197786, 'Juneau')">Juneau</button>
+      <button onclick="flyTo( 39.002377, -95.052264, 'Kansas')">Kansas</button>
+      <button onclick="flyTo( 39.068355, -94.840670, 'Lake of the Forest')">
+        Lake of the Forest
+      </button>
+      <button onclick="flyTo( 42.053223, -70.608589, 'Massachusetts')">
+        Massachusetts
+      </button>
+    </div>
 
     <script>
       const map = L.map('map', {

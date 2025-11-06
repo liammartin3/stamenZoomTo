@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <h3 id="header" class="page-header">
+      The only place that matters, is by your side
+    </h3>
+    <!-- reference to Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+
+    <!-- reference to Leaflet JavaScript -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <script src="js/leaflet-providers.js"></script>
+  </head>
+
+  <body>
+    <style>
+      button {
+        background-color: #000000;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        color: #fff;
+        display: -webkit-flex;
+        display: flex;
+        font-family: courier, monospace;
+        font-size: 14px;
+        height: 30px;
+        margin: 0 0 7px 10px;
+        min-width: 35px;
+        padding: 0 5px;
+        position: relative;
+        text-align: center;
+        top: 125px;
+        z-index: 999;
+      }
+      button#top {
+        border: none;
+        background: transparent;
+        color: #000000;
+        font-size: 15px;
+        font-weight: bolder;
+        top: 125px;
+      }
+      h3#header {
+        color: rgb(0, 0, 0);
+        font-family: courier, monospace;
+        position: absolute;
+        top: 550px;
+        text-align: center;
+        width: 100%;
+        z-index: 999;
+      }
+      .leaflet-popup-content-wrapper,
+      .leaflet-popup-tip {
+        color: #fff;
+        background-color: #000;
+        font-family: courier, monospace;
+      }
+      h4 {
+        font-weight: normal;
+      }
+      h5 {
+        font-weight: normal;
+      }
+      #video-container {
+        max-width: 300px;
+      }
+      video {
+        width: 250px;
+        height: 300px;
+      }
+    </style>
+
+    <div
+      id="map"
+      style="height: 600px; position: absolute; top: 27px; width: 100%"
+    ></div>
+    <script>
+      const map = L.map('map', {
+        center: [39.73, -95.99],
+        zoom: 4
+      })
+
+      const bondog = L.marker([40.7904323, -111.8649402])
+        .bindPopup(
+          '<h4>July 2021: Shoreline Trail</h4> <h5>We pick up a travelling companion<br>...and a trouble maker, Bonnie!</h5> <img src="photos/utah/bondog.jpeg" width = "225" height = "275" style="display: block; margin: 0 auto;" />'
+        )
+        .addTo(map)
+
+      var watercolor = L.tileLayer
+        .provider('Stadia.StamenWatercolor')
+        .addTo(map)
+
+      var popupContent =
+        "<h4>Hello there and thanks for visiting our wedding website! Amanda and I have been going on adventures for almost nine years now and I thought this would be a fun way to share some of these memories with you. As I was putting this web map together, I spent hours looking at all of our photos together throughout the years. The process was extremely humbling. I feel so lucky and thankful to have gotten the chance to visit all of these places with my best friend. I can't wait to see where else we go. Cheers! <br><br><b>Click on the blue pins to open the pop ups and use the navigation bar to the left to zoom to specific locations.</b></h4>"
+
+      var popup = L.popup()
+      var newLatLng = L.latLng(32, -95)
+
+      popup.setLatLng(newLatLng).setContent(popupContent).openOn(map)
+    </script>
+  </body>
+</html>
